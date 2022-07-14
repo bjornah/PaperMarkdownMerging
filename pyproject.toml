@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[project]
+name = "paper_markdown_merger"
+version = "0.0.1"
+authors = [
+  { name="Björn Ahlgren", email="bjorn.ahlgren@elekta.com" },
+]
+description = "A package to merge multiple mardown documents according to specific formatting rules"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
