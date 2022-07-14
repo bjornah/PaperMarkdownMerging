@@ -8,6 +8,8 @@ If you want to set a default path, add file "default_path.txt" to ./credentials,
 
     [defaults]
     default_path=your_default_path
+
+where "your_default_path" is whatever you want your default path to be.
 ### Outline of the basedir
 
 - basedir/
