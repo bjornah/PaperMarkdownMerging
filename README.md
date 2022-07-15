@@ -1,6 +1,8 @@
 # README
 A small script to help organise scientific papers in a simple, portable way
 
+## Package overview
+
 Creates master document for paper summaries. Requires a directory structure where the master document ends up in the base folder. This base folder requires two subfolders, pdfs/ and summaries/. pdfs/ holds the pdfs associated with each paper and these will be linked to in the master document via hyper refs. summaries/ holds markdown documents summarising each paper. These files should not contain hyper links. It is a good idea to in these files give the full title of the paper. The naming convention for all .md and .pdf files should be "Firstauthor+year" + file ending. In the case of multiple papers ending up with the same name, add Secondauthor, etc. before "+year".
 
 If you want to set a default path, add file "default_path.txt" to ./credentials, containing
@@ -10,7 +12,7 @@ If you want to set a default path, add file "default_path.txt" to ./credentials,
 
 where "your_default_path" is whatever you want your default path to be.
 
-## Full package folder structure 
+### Full package folder structure 
 ```
 PaperMarkdownMerging
 ┣ credentials
@@ -21,7 +23,7 @@ PaperMarkdownMerging
     ┗ __init__.py
 ```
 
-## Outline of basedir
+### Outline of basedir
 ```
 basedir
 ┣ pdfs
@@ -46,7 +48,7 @@ In case the .md file is missing for a paper where the pdf is present, an .md fil
   conda activate pmm
   pip install -r requirements.txt
 ```
-- Add here instructions on how to make script executable from anywhere. Install where in linux/windows? Add to path? Add shebang?
+- Add instructions here on how to make script accessible from anywhere. Install where in linux/windows? Add to path? 
 ## To do
 - [] Add more proper installation instructions for both linux and windows to allow execution from arbitrary location
 - [] Make pdf and summaries folders arbitrary

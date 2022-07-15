@@ -5,6 +5,7 @@ import fileinput
 import argparse
 import configparser
 import pathlib
+import sys
 
 package_base_dir = pathlib.Path(__file__).parent.parent.parent.resolve()
 
@@ -61,7 +62,7 @@ def write_link(paper_name):
     write_string = f'### [{name}]({rel_path})\n'
     return write_string
         
-if __name__ == '__main__':
+def main():
     parser = parse_args()
     args = parser.parse_args()
 
@@ -94,3 +95,6 @@ if __name__ == '__main__':
                         line = write_link(paper_name)
                 fo.write(line)
             fo.write('\n\n')
+
+if __name__ == '__main__':
+    sys.exit(main())
