@@ -1,4 +1,3 @@
-dist*
 src/notebooks*
 *ipynb
 credentials/default_path.txt
