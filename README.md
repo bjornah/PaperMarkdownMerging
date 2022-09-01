@@ -11,11 +11,13 @@ A small script to help organise scientific papers in a simple, portable way
   pip install .
 ```
 ## Usage
-Usable as console command as
+Available as console command (anaconda prompt on windows) as
 ```
 conda activate pmm
 pmm [-h] [--basedir BASEDIR]
 ```
+
+NOTE: currently, I'm experiencing issues trying to run this on wsl on windows, so make sure to use native windows version instead. Activate through anaconda console command line.
 
 ## Package overview
 
@@ -57,7 +59,6 @@ where each paper summary document should start with
 In case the .md file is missing for a paper where the pdf is present, an .md file will be created, containing only "### FirstAuthor et al. (year)"
 
 ## To do
-- [] Add more proper installation instructions for both linux and windows to allow execution from arbitrary location
 - [] Make pdf and summaries folders arbitrary
 - [] Make summary document name editable
 - [] Add support for relative paths

@@ -34,6 +34,7 @@ def parse_args():
         default=default_path,
         help='Path to base directory. Needs to hold directories "summaries" and "pdfs".'
     )
+    
 
     return parser
 
