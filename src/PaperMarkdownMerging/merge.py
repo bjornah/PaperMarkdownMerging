@@ -54,8 +54,9 @@ def get_all_papers(source_document_path, source_pdf_path):
     return paper_names
 
 def get_name(paper_name):
-    name = paper_name.replace('+', ' et al. (')+')'
-    return name
+    if '+' in paper_name:
+        paper_name = paper_name.replace('+', ' et al. (')+')'
+    return paper_name
 
 def write_link(paper_name):
     name = get_name(paper_name)
@@ -77,25 +78,29 @@ def main():
     
     with open(master_document_path, 'w') as fo:
         for paper_name in paper_names:
-            md_name = os.path.join(source_document_path, f'{paper_name}.md')
-            pdf_name = os.path.join(source_pdf_path, f'{paper_name}.pdf')
-            if not os.path.exists(md_name):
-                print(f'{md_name} does not exist. Will create it.')
-                with open(md_name, 'w') as foo:
-                    
-                    line = get_name(paper_name)
-                    foo.write(f'### {line}\n')
+            try:
+                md_name = os.path.join(source_document_path, f'{paper_name}.md')
+                pdf_name = os.path.join(source_pdf_path, f'{paper_name}.pdf')
+                if not os.path.exists(md_name):
+                    print(f'{md_name} does not exist. Will create it.')
+                    with open(md_name, 'w') as foo:
+                        
+                        line = get_name(paper_name)
+                        foo.write(f'### {line}\n')
+                        foo.write(f'##### [title]\n')
 
-            for i,line in enumerate(fileinput.input(md_name)):
-                if i==0:
-                    if not os.path.exists(pdf_name):
-                        print(f'{pdf_name} does not exist')
-                        name = get_name(paper_name)
-                        line = f'### {name} [pdf is missing]\n'
-                    else:
-                        line = write_link(paper_name)
-                fo.write(line)
-            fo.write('\n\n')
+                for i,line in enumerate(fileinput.input(md_name)):
+                    if i==0:
+                        if not os.path.exists(pdf_name):
+                            print(f'{pdf_name} does not exist')
+                            name = get_name(paper_name)
+                            line = f'### {name} [pdf is missing]\n'
+                        else:
+                            line = write_link(paper_name)
+                    fo.write(line)
+                fo.write('\n\n')
+            except Exception as e:
+                print(f'trying to write {paper_name} to {md_name} fails:', e)
 
 if __name__ == '__main__':
     sys.exit(main())
