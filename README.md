@@ -8,7 +8,7 @@ A small script to help organise scientific papers in a simple, portable way
   conda create --name pmm python=3.7
   conda activate pmm
   pip install -r requirements.txt
-  pip install .
+  pip install -e .
 ```
 ## Usage
 Available as console command (anaconda prompt on windows) as

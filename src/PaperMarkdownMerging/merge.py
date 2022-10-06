@@ -73,6 +73,11 @@ def main():
     source_document_path = os.path.join(basedir, 'summaries')
     source_pdf_path = os.path.join(basedir, 'pdfs')
     master_document_path = os.path.join(basedir, 'paper_summaries_master.md')
+
+    # uncomment for debugging
+    # print(f'source_document_path = {source_document_path}')
+    # print(f'source_pdf_path = {source_pdf_path}')
+    # print(f'master_document_path = {master_document_path}')
     
     paper_names = get_all_papers(source_document_path, source_pdf_path)
     
@@ -89,7 +94,8 @@ def main():
                         foo.write(f'### {line}\n')
                         foo.write(f'##### [title]\n')
 
-                for i,line in enumerate(fileinput.input(md_name)):
+                finput = fileinput.input(md_name)
+                for i,line in enumerate(finput):
                     if i==0:
                         if not os.path.exists(pdf_name):
                             print(f'{pdf_name} does not exist')
@@ -101,6 +107,7 @@ def main():
                 fo.write('\n\n')
             except Exception as e:
                 print(f'trying to write {paper_name} to {md_name} fails:', e)
+                finput.close()
 
 if __name__ == '__main__':
     sys.exit(main())
